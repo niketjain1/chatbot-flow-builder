@@ -7291,6 +7291,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lucide@^0.378.0:
+  version "0.378.0"
+  resolved "https://registry.yarnpkg.com/lucide/-/lucide-0.378.0.tgz#0dd85ae4ae217f1e9794175f0ac3404a4bcd8816"
+  integrity sha512-bwWXuZf2jZbCI0Y+MWyv5bedWIxYKtgAEzC2Yl87Nrt/KcG9qTwAQxVFcZ6IwBioML06QUQsG+qRjyQvYHdbBQ==
+
 lusca@1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/lusca/-/lusca-1.6.1.tgz#f7445e50c720030f5ee53d1336e9e53d1786c34f"
