@@ -8,7 +8,7 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 
-import Sidebar from "./components/SideBar";
+import NodesPanel from "./components/NodesPanel";
 import TextNode from "./components/TextNode";
 import SettingsPanel from "./components/SettingsPanel";
 import TopBar from "./components/TopBar";
@@ -149,7 +149,7 @@ const Flow = () => {
               <Controls />
             </ReactFlow>
           </div>
-          <Sidebar />
+          <NodesPanel />
           <SettingsPanel
             selectedNode={selectedNode}
             onTextChange={onTextChange}

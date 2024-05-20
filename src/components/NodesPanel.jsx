@@ -2,7 +2,7 @@ import "../styles/index.css";
 import IconTextButton from "./IconTextButton";
 import { BiMessageSquareDetail } from "react-icons/bi";
 
-const SideBar = () => {
+const NodesPanel = () => {
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
     event.dataTransfer.effectAllowed = "move";
@@ -24,4 +24,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default NodesPanel;
