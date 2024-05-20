@@ -24,7 +24,7 @@ const TextNode = ({ data, isConnectable }) => {
         <FaWhatsapp size={10} className="ml-auto flex mr-1 mt-0.5" />
       </div>
       <div className="flex flex-auto">
-        <div type="text" className="w-full" onChange={onChange} />
+        <div className="roboto-regular p-1 w-full">{data.label}</div>
       </div>
       <Handle
         type="source"
