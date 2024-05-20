@@ -12,7 +12,7 @@ const SideBar = () => {
   const text = "Message";
 
   return (
-    <aside className="fixed top-0 right-0 w-1/5 h-full bg-gray-100 border-gray-200 border-l-2 p-4 z-10">
+    <aside className="fixed mt-12 top-0 right-0 w-1/5 h-full bg-gray-100 border-gray-200 border-l-2 p-4 z-10">
       <button
         className="flex flex-col h-14 w-40 items-center justify-center border border-blue-400 p-2 rounded-lg"
         onDragStart={(event) => onDragStart(event, "input")}

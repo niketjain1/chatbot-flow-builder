@@ -7,7 +7,7 @@ const SettingsPanel = ({ selectedNode, onTextChange, onSave }) => {
   }
 
   return (
-    <aside className="fixed top-0 right-0 w-1/5 h-full bg-gray-100 border-gray-200 border-l-2 p-4 z-10">
+    <aside className="fixed mt-12 top-0 right-0 w-1/5 h-full bg-gray-100 border-gray-200 border-l-2 p-4 z-10">
       <div className="mb-2">
         <label className="block mb-1">Text:</label>
         <input
