@@ -116,6 +116,10 @@ const Flow = () => {
     }
   }, [nodes, edges, reactFlowInstance]);
 
+  const backToNodesPanel = () => {
+    setSelectedNode(null);
+  };
+
   return (
     <>
       <TopBar onSave={onSave} />
@@ -146,7 +150,7 @@ const Flow = () => {
           <SettingsPanel
             selectedNode={selectedNode}
             onTextChange={onTextChange}
-            onSave={onSave}
+            onBack={backToNodesPanel}
           />
         </ReactFlowProvider>
       </div>

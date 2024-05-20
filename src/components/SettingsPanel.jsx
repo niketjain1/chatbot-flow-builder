@@ -1,7 +1,6 @@
-// src/SettingsPanel.js
 import React from "react";
 
-const SettingsPanel = ({ selectedNode, onTextChange, onSave }) => {
+const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
   if (!selectedNode) {
     return null;
   }
@@ -19,10 +18,10 @@ const SettingsPanel = ({ selectedNode, onTextChange, onSave }) => {
         />
       </div>
       <button
-        onClick={onSave}
-        className="w-full p-2 bg-blue-500 text-white rounded"
+        onClick={onBack}
+        className="w-full p-2 bg-slate-500 text-white rounded"
       >
-        Save Changes
+        Back to Nodes Panel
       </button>
     </aside>
   );
