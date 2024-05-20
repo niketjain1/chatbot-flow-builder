@@ -1,15 +1,11 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Handle, Position } from "reactflow";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { FaWhatsapp } from "react-icons/fa";
 
 const TextNode = ({ data, isConnectable }) => {
-  const onChange = useCallback((e) => {
-    console.log(e.target.value);
-  }, []);
-
   return (
-    <div className="flex flex-col h-14 w-40 bg-white rounded-lg shadow-xl">
+    <div className="flex flex-col min-h-14 h-auto w-40 bg-white rounded-lg shadow-xl hover:cursor-pointer">
       <Handle
         type="target"
         position={Position.Left}
