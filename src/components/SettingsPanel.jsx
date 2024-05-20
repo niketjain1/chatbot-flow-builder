@@ -31,6 +31,12 @@ const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
       </div>
       <button
         onClick={onBack}
+        className="w-full p-2 bg-blue-500 text-white rounded mb-2"
+      >
+        Save Text
+      </button>
+      <button
+        onClick={onBack}
         className="w-full p-2 bg-slate-500 text-white rounded"
       >
         Back to Nodes Panel
