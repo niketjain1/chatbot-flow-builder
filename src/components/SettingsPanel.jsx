@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    if (selectedNode) {
+      setText(selectedNode.data.label);
+    }
+  }, [selectedNode]);
+
+  const handleTextChange = (event) => {
+    setText(event.target.value);
+    onTextChange(selectedNode.id, event.target.value);
+  };
+
   if (!selectedNode) {
     return null;
   }
@@ -11,9 +24,8 @@ const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
         <label className="block mb-1">Text:</label>
         <input
           type="text"
-          onChange={(event) =>
-            onTextChange(selectedNode.id, event.target.value)
-          }
+          value={text}
+          onChange={handleTextChange}
           className="w-full p-2 border border-gray-300"
         />
       </div>
