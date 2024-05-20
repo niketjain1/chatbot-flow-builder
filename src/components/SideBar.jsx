@@ -2,7 +2,6 @@ import "../index.css";
 import IconTextButton from "./IconTextButton";
 import { BiMessageSquareDetail } from "react-icons/bi";
 
-
 const SideBar = () => {
   const onDragStart = (event, nodeType) => {
     event.dataTransfer.setData("application/reactflow", nodeType);
