@@ -1,4 +1,4 @@
-import "../index.css";
+import "../styles/index.css";
 import IconTextButton from "./IconTextButton";
 import { BiMessageSquareDetail } from "react-icons/bi";
 
