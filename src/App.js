@@ -11,6 +11,9 @@ import "reactflow/dist/style.css";
 import Sidebar from "./components/SideBar";
 import TextNode from "./components/TextNode";
 import SettingsPanel from "./components/SettingsPanel";
+import TopBar from "./components/TopBar";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NodeTypes = {
   textNode: TextNode,
@@ -90,37 +93,57 @@ const Flow = () => {
   );
 
   const onSave = useCallback(() => {
-    setSelectedNode(null);
-  }, []);
+    const nodesWithEmptyTargetHandles = nodes.filter(
+      (node) =>
+        node.type === "textNode" &&
+        !edges.some((edge) => edge.target === node.id)
+    );
+
+    if (nodesWithEmptyTargetHandles.length > 1) {
+      toast.error("Error: More than one node has an empty target handle.", {
+        position: "top-center",
+      });
+    } else {
+      toast.success("Flow saved successfully!", { position: "top-center" });
+      setSelectedNode(null);
+    }
+  }, [nodes, edges]);
 
   return (
-    <div className="flex flex-row" style={{ width: "200vh", height: "100vh" }}>
-      <ReactFlowProvider>
-        <div className="w-full h-full" ref={reactFlowWrapper}>
-          <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-            onInit={setReactFlowInstance}
-            onDrop={onDrop}
-            onDragOver={onDragOver}
-            onNodeClick={onNodeClick}
-            nodeTypes={NodeTypes}
-            fitView
-          >
-            <Controls />
-          </ReactFlow>
-        </div>
-        <Sidebar />
-        <SettingsPanel
-          selectedNode={selectedNode}
-          onTextChange={onTextChange}
-          onSave={onSave}
-        />
-      </ReactFlowProvider>
-    </div>
+    <>
+      <TopBar onSave={onSave} />
+
+      <div
+        className="flex flex-row"
+        style={{ width: "200vh", height: "100vh" }}
+      >
+        <ReactFlowProvider>
+          <div className="w-full h-full" ref={reactFlowWrapper}>
+            <ReactFlow
+              nodes={nodes}
+              edges={edges}
+              onNodesChange={onNodesChange}
+              onEdgesChange={onEdgesChange}
+              onConnect={onConnect}
+              onInit={setReactFlowInstance}
+              onDrop={onDrop}
+              onDragOver={onDragOver}
+              onNodeClick={onNodeClick}
+              nodeTypes={NodeTypes}
+              fitView
+            >
+              <Controls />
+            </ReactFlow>
+          </div>
+          <Sidebar />
+          <SettingsPanel
+            selectedNode={selectedNode}
+            onTextChange={onTextChange}
+            onSave={onSave}
+          />
+        </ReactFlowProvider>
+      </div>
+    </>
   );
 };
 
