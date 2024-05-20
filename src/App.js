@@ -15,6 +15,8 @@ import TopBar from "./components/TopBar";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const flowKey = "flow-chart";
+
 const NodeTypes = {
   textNode: TextNode,
 };
@@ -104,10 +106,15 @@ const Flow = () => {
         position: "top-center",
       });
     } else {
+      if (reactFlowInstance) {
+        const flow = reactFlowInstance.toObject();
+        localStorage.setItem(flowKey, JSON.stringify(flow));
+      }
       toast.success("Flow saved successfully!", { position: "top-center" });
+
       setSelectedNode(null);
     }
-  }, [nodes, edges]);
+  }, [nodes, edges, reactFlowInstance]);
 
   return (
     <>
