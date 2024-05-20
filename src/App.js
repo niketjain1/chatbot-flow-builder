@@ -110,7 +110,10 @@ const Flow = () => {
         const flow = reactFlowInstance.toObject();
         localStorage.setItem(flowKey, JSON.stringify(flow));
       }
-      toast.success("Flow saved successfully!", { position: "top-center" });
+      toast.success(
+        "Flow saved successfully in the local memory, please check!",
+        { position: "top-center" }
+      );
 
       setSelectedNode(null);
     }
