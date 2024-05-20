@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const flowKey = "flow-chart";
 
+// Defining the node types
 const NodeTypes = {
   textNode: TextNode,
 };
@@ -35,21 +36,24 @@ const getId = () => `${id++}`;
 
 const Flow = () => {
   const reactFlowWrapper = useRef(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const [selectedNode, setSelectedNode] = useState(false);
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes); // state management for nodes
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]); // state management for edges
+  const [reactFlowInstance, setReactFlowInstance] = useState(null); // state management for react flow instance
+  const [selectedNode, setSelectedNode] = useState(false); // state to manage if the node is selected or not
 
+  // Handler to add edges between nodes
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
 
+  // Function for handling drag over event
   const onDragOver = useCallback((event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   }, []);
 
+  // Callback for handling drop event
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
@@ -76,11 +80,13 @@ const Flow = () => {
     [reactFlowInstance, setNodes]
   );
 
+  // Function to handle node click event
   const onNodeClick = useCallback((event, element) => {
     console.log("Element", element.id);
     setSelectedNode(element);
   }, []);
 
+  // Function for handling text change in the settings panel
   const onTextChange = useCallback(
     (id, value) => {
       setNodes((nds) =>
@@ -94,6 +100,7 @@ const Flow = () => {
     [setNodes]
   );
 
+  // Function to save the flow in the local storage
   const onSave = useCallback(() => {
     const nodesWithEmptyTargetHandles = nodes.filter(
       (node) =>
@@ -119,6 +126,7 @@ const Flow = () => {
     }
   }, [nodes, edges, reactFlowInstance]);
 
+  // Fuction to redirect back to the nodes panel as setting the selected node to null
   const backToNodesPanel = () => {
     setSelectedNode(null);
   };

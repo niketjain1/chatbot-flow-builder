@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const TextNode = ({ data, isConnectable }) => {
   return (
     <div className="flex flex-col min-h-14 h-auto w-40 bg-white rounded-lg shadow-xl hover:cursor-pointer">
+      {/* Handles for connecting the node to the left */}
       <Handle
         type="target"
         position={Position.Left}
@@ -22,6 +23,7 @@ const TextNode = ({ data, isConnectable }) => {
       <div className="flex flex-auto">
         <div className="roboto-regular p-1 w-full">{data.label}</div>
       </div>
+      {/* Handles for connecting the node to the right */}
       <Handle
         type="source"
         position={Position.Right}

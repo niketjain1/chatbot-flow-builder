@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 
 const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(""); // State to manage the text
 
+  // Using useEffect to update the text input when a new node is selected
   useEffect(() => {
     if (selectedNode) {
       setText(selectedNode.data.label);
     }
   }, [selectedNode]);
 
+  // Handler for text input changes
   const handleTextChange = (event) => {
     setText(event.target.value);
     onTextChange(selectedNode.id, event.target.value);
   };
 
+  // If no node is selected, we are not rendering the settings panel
   if (!selectedNode) {
     return null;
   }
