@@ -1,6 +1,7 @@
 import "../index.css";
 import IconTextButton from "./IconTextButton";
-import { MessageSquareText } from "lucide-react";
+import { BiMessageSquareDetail } from "react-icons/bi";
+
 
 const SideBar = () => {
   const onDragStart = (event, nodeType) => {
@@ -8,7 +9,7 @@ const SideBar = () => {
     event.dataTransfer.effectAllowed = "move";
   };
 
-  const icon = <MessageSquareText size={18} />;
+  const icon = <BiMessageSquareDetail size={18} />;
   const text = "Message";
 
   return (
