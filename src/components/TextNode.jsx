@@ -7,7 +7,7 @@ import CustomHandle from "./CustomHandle";
 const TextNode = ({ data, isConnectable }) => {
   return (
     <div className="flex flex-col min-h-14 h-auto w-40 bg-white rounded-lg shadow-xl hover:cursor-pointer">
-      {/* Handles for connecting the node to the left */}
+      {/* Handle for the target type connection */}
       <Handle
         type="target"
         position={Position.Left}
@@ -24,7 +24,8 @@ const TextNode = ({ data, isConnectable }) => {
       <div className="flex flex-auto">
         <div className="roboto-regular p-1 w-full">{data.label}</div>
       </div>
-      {/* Handles for connecting the node to the right */}
+      {/* Custom handle for source handle to connect nodes on drag, 
+      isConnectable is set to 1 to limit the source handle connection to 1 */}
       <CustomHandle type="source" position={Position.Right} isConnectable={1} />
     </div>
   );
