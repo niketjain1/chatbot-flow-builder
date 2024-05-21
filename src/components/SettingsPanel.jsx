@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
+const SettingsPanel = ({ selectedNode, onTextChange, onBack, onDelete }) => {
   const [text, setText] = useState(""); // State to manage the text
 
   // Using useEffect to update the text input when a new node is selected
@@ -40,9 +40,15 @@ const SettingsPanel = ({ selectedNode, onTextChange, onBack }) => {
       </button>
       <button
         onClick={onBack}
-        className="w-full p-2 bg-slate-500 text-white rounded"
+        className="w-full p-2 bg-slate-500 text-white mb-2 rounded"
       >
         Back to Nodes Panel
+      </button>
+      <button
+        onClick={() => onDelete([selectedNode])}
+        className="w-full p-2 bg-red-400 text-white rounded"
+      >
+        Delete Node
       </button>
     </aside>
   );

@@ -5,6 +5,9 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
   Controls,
+  getIncomers,
+  getOutgoers,
+  getConnectedEdges,
 } from "reactflow";
 import "reactflow/dist/style.css";
 
@@ -82,7 +85,6 @@ const Flow = () => {
 
   // Function to handle node click event
   const onNodeClick = useCallback((event, element) => {
-    console.log("Element", element.id);
     setSelectedNode(element);
   }, []);
 
@@ -131,6 +133,37 @@ const Flow = () => {
     setSelectedNode(null);
   };
 
+  // Function to delete a node
+  const onNodesDelete = useCallback(
+    (deleted) => {
+      setNodes((nds) =>
+        nds.filter((node) => !deleted.some((del) => del.id === node.id))
+      );
+      setEdges((eds) =>
+        deleted.reduce((acc, node) => {
+          const incomers = getIncomers(node, nodes, eds);
+          const outgoers = getOutgoers(node, nodes, eds);
+          const connectedEdges = getConnectedEdges([node], eds);
+
+          const remainingEdges = acc.filter(
+            (edge) => !connectedEdges.includes(edge)
+          );
+
+          const createdEdges = incomers.flatMap(({ id: source }) =>
+            outgoers.map(({ id: target }) => ({
+              id: `${source}->${target}`,
+              source,
+              target,
+            }))
+          );
+
+          return [...remainingEdges, ...createdEdges];
+        }, eds)
+      );
+    },
+    [setNodes, setEdges, nodes]
+  );
+  
   return (
     <>
       <TopBar onSave={onSave} />
@@ -151,6 +184,7 @@ const Flow = () => {
               onDrop={onDrop}
               onDragOver={onDragOver}
               onNodeClick={onNodeClick}
+              onNodesDelete={onNodesDelete}
               nodeTypes={NodeTypes}
               fitView
             >
@@ -162,6 +196,7 @@ const Flow = () => {
             selectedNode={selectedNode}
             onTextChange={onTextChange}
             onBack={backToNodesPanel}
+            onDelete={onNodesDelete}
           />
         </ReactFlowProvider>
       </div>
