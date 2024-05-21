@@ -17,12 +17,18 @@ import SettingsPanel from "./components/SettingsPanel";
 import TopBar from "./components/TopBar";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomEdge from "./components/CustomEdge";
 
 const flowKey = "flow-chart";
 
 // Defining the node types
 const NodeTypes = {
   textNode: TextNode,
+};
+
+// Define the custom edge type
+const EdgeTypes = {
+  customEdge: CustomEdge,
 };
 
 const initialNodes = [
@@ -46,7 +52,8 @@ const Flow = () => {
 
   // Handler to add edges between nodes
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
+    (params) =>
+      setEdges((eds) => addEdge({ ...params, type: "customEdge" }, eds)),
     [setEdges]
   );
 
@@ -163,7 +170,7 @@ const Flow = () => {
     },
     [setNodes, setEdges, nodes]
   );
-  
+
   return (
     <>
       <TopBar onSave={onSave} />
@@ -186,6 +193,7 @@ const Flow = () => {
               onNodeClick={onNodeClick}
               onNodesDelete={onNodesDelete}
               nodeTypes={NodeTypes}
+              edgeTypes={EdgeTypes}
               fitView
             >
               <Controls />
