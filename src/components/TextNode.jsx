@@ -2,6 +2,7 @@ import React from "react";
 import { Handle, Position } from "reactflow";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { FaWhatsapp } from "react-icons/fa";
+import CustomHandle from "./CustomHandle";
 
 const TextNode = ({ data, isConnectable }) => {
   return (
@@ -24,11 +25,7 @@ const TextNode = ({ data, isConnectable }) => {
         <div className="roboto-regular p-1 w-full">{data.label}</div>
       </div>
       {/* Handles for connecting the node to the right */}
-      <Handle
-        type="source"
-        position={Position.Right}
-        isConnectable={isConnectable}
-      />
+      <CustomHandle type="source" position={Position.Right} isConnectable={1} />
     </div>
   );
 };
