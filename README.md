@@ -8,6 +8,7 @@ This project is built using React and React-Flow library. It allows users to cre
 - **Customizable Nodes**: Nodes can be customised easily from the settings panel by clicking on the node.
 - **Connectivity**: Users can connect nodes by dragging connectors between them.
 - **Save Functionality**: Enables users to save the flowchart information locally.
+- **Nodes and Edges Deletion**: Users can easily delete nodes and edges.
 
 ## Installation
 
@@ -37,7 +38,8 @@ $ npm start
 
 5. Open your browser and visit http://localhost:3000 to view the app.
 
-### Dependencies: 
+### Dependencies:
+
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
 - [React Flow](https://reactflow.dev/) - A React library for building flowcharts and node-based applications.
 - [React Icons](https://react-icons.github.io/react-icons/) - A library for including popular icons in React projects.
