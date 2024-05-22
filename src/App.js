@@ -196,7 +196,9 @@ const Flow = () => {
               edgeTypes={EdgeTypes}
               fitView
             >
-              <Controls />
+              <div className="controls-container">
+                <Controls />
+              </div>
             </ReactFlow>
           </div>
           <NodesPanel />
