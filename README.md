@@ -44,3 +44,6 @@ $ npm start
 - [React Flow](https://reactflow.dev/) - A React library for building flowcharts and node-based applications.
 - [React Icons](https://react-icons.github.io/react-icons/) - A library for including popular icons in React projects.
 - [React Toastify](https://fkhadra.github.io/react-toastify/) - A React library for toast notifications.
+
+### Hosting link:
+[Flow Editor](https://chatbot-flow-builder-khaki.vercel.app/)
