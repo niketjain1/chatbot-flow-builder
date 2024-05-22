@@ -171,6 +171,11 @@ const Flow = () => {
     [setNodes, setEdges, nodes]
   );
 
+  // function to check self connection of a node
+  const isValidHandle = (connection) => {
+    return connection.source !== connection.target;
+  };
+
   return (
     <>
       <TopBar onSave={onSave} />
@@ -194,6 +199,7 @@ const Flow = () => {
               onNodesDelete={onNodesDelete}
               nodeTypes={NodeTypes}
               edgeTypes={EdgeTypes}
+              isValidConnection={isValidHandle}
               fitView
             >
               <div className="controls-container">
